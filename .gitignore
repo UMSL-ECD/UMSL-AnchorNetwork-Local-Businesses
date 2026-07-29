@@ -1,0 +1,14 @@
+# Stale/duplicate source data superseded by the root-level Ref-Directory.csv
+1Ref-Directory.csv
+data/
+
+# Local enrichment progress (regenerated automatically; not meant to be versioned)
+scripts/.enrich_checkpoint.json
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# OS artifacts
+.DS_Store
+Thumbs.db

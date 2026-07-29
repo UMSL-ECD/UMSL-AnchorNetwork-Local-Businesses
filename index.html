@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Businesses</title>
+  <meta name="description" content="Search Anchor Network Area for suppliers and services by name, category, or ZIP code.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.44.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Local Businesses</h1>
+      <p class="site-subtitle">Search Anchor Network Area for suppliers and services</p>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Intro / About -->
+    <section class="site-intro">
+      <p>A searchable directory of local businesses &mdash; suppliers, contractors, and service providers &mdash; operating within UMSL's Anchor Network Area.</p>
+      <p>Search by name or keyword, or narrow results using the category and ZIP code filters below.</p>
+    </section>
+
+    <!-- Search & Filters -->
+    <section class="search-section" aria-label="Search and filter businesses">
+      <div class="search-bar">
+        <label for="search-input" class="sr-only">Search businesses</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search by name, service, or keyword..."
+          autocomplete="off"
+        >
+      </div>
+      <div class="filters">
+        <div class="filter-group">
+          <label for="category-filter">Category</label>
+          <select id="category-filter">
+            <option value="">All Categories</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="neighborhood-filter">ZIP code</label>
+          <div class="autocomplete-wrapper">
+            <input
+              type="text"
+              id="neighborhood-filter"
+              placeholder="Type to filter..."
+              autocomplete="off"
+            >
+            <ul id="neighborhood-suggestions" class="suggestions-list" role="listbox" hidden></ul>
+          </div>
+        </div>
+        <button id="clear-filters" class="btn-clear" hidden>Clear All Filters</button>
+      </div>
+    </section>
+
+    <!-- Active Filters -->
+    <div id="active-filters" class="active-filters" hidden aria-label="Active filters"></div>
+
+    <!-- Results Info -->
+    <div id="results-info" class="results-info" aria-live="polite"></div>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading business directory...</p>
+    </div>
+
+    <!-- Category Browse (Initial State) -->
+    <section id="category-browse" class="category-browse" hidden aria-label="Browse by category">
+      <h2>Browse by Category</h2>
+      <div id="category-tiles" class="category-tiles"></div>
+    </section>
+
+    <!-- Results Grid -->
+    <div id="results-grid" class="results-grid" hidden></div>
+
+    <!-- No Results -->
+    <div id="no-results" class="no-results" hidden>
+      <p>No businesses found matching your search.</p>
+      <p>Try a different search term or <button id="clear-from-empty" class="link-btn">clear all filters</button>.</p>
+    </div>
+
+    <!-- Pagination -->
+    <nav id="pagination" class="pagination" hidden aria-label="Results pagination">
+      <button id="prev-page" class="btn-page" disabled>Previous</button>
+      <span id="page-info" class="page-info"></span>
+      <button id="next-page" class="btn-page" disabled>Next</button>
+    </nav>
+  </main>
+
+  <!-- Business Detail Modal -->
+  <dialog id="business-modal" class="business-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Data sourced from Reference Solutions through the St. Louis County Public Library.</p>
+      <p>This is a free public resource. Data may not reflect current business status.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+  <script src="app.js?v=4"></script>
+
+  <noscript>
+    <p style="text-align:center;padding:2rem;">This directory requires JavaScript to search and browse businesses. Please enable JavaScript in your browser.</p>
+  </noscript>
+</body>
+</html>
