@@ -240,7 +240,11 @@ def generate_basic_tags(name, naics_desc, sic_desc, category):
     if category and category != "Other":
         tags.add(category.lower())
 
-    return list(tags)
+    # Sorted for deterministic output -- Python randomizes set iteration
+    # order per-process, so an unsorted list() here would reorder tags on
+    # every run even when nothing actually changed, producing spurious
+    # diffs/commits in the auto-refresh workflow.
+    return sorted(tags)
 
 
 if __name__ == "__main__":
