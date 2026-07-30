@@ -8,6 +8,11 @@ on:
       - "Ref-Directory.csv"
   workflow_dispatch:
 
+# The default GITHUB_TOKEN is read-only unless a job explicitly asks for
+# more. Without this, "git push" below fails with exit code 128.
+permissions:
+  contents: write
+
 jobs:
   rebuild:
     runs-on: ubuntu-latest
